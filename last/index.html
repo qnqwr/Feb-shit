@@ -1,1 +1,225 @@
+<!-- same as the previous -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/5jeiLIq.png">
+    <meta name="description" content="From Anonymous">
+    <title>so...</title>
+    <script>
+      function setViewport() {
+        var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        
+        var scale = viewportWidth / 800;
+        
+        var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+        if (viewportMetaTag) {
+          viewportMetaTag.content = 'width=device-width, initial-scale=' + scale + ', user-scalable=no';
+        }
+      }
 
+      window.onload = setViewport;
+    </script>
+    <script>
+      function ctrlShiftKey(e, keyCode) {
+        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+      }
+      document.onkeydown = (e) => {
+        if (event.keyCode === 123 || ctrlShiftKey(e, 'I') || ctrlShiftKey(e, 'J') || ctrlShiftKey(e, 'C') || (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))) return false;
+      };
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: black;
+        font-family: Arial, sans-serif;
+      }
+
+      #text {
+          font-size: 24px;
+          font-family: Arial, sans-serif;
+          border-right: 2px solid black;
+          white-space: nowrap;
+          overflow: hidden;
+          animation: typing 5s steps(40, end);
+      }
+
+      @keyframes typing {
+          from {
+              width: 0;
+          }
+          to {
+              width: 100%;
+          }
+      }
+
+      #title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      #container {
+        gap: 20px;
+        max-width: 600px;
+        background-color: lightpink;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        color: black;
+      }
+
+      .button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        text-align: center;
+        background-color: #28282b;
+        color: white;
+        margin: 5px;
+      }
+    
+
+      .button:hover {
+        transform: scale(1.1);
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: linear-gradient(to bottom, transparent, transparent);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #randomButton {
+        position: absolute;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        text-align: center;
+        background-color: #28282b;
+        color: white;
+        margin: 5px;
+      }
+ 
+      #gifImage {
+        width: 200px;
+        height: 200px;
+      }
+
+      #gif2 {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p>will you be my valentine?‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ <button id="yes" class="button">Yes</button> <button id="randomButton" class="button1">No</button>‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎</p>
+
+      <p id="yesText" class="hidden"></p>
+      <img id="gif2" src="https://fcbk.su/_data/stickers/mugsy_in_love/mugsy_in_love_12.png">
+      <img id="gifImage" src="https://pbs.twimg.com/profile_images/378800000417914975/df91e0211de6ba5cc7c50523af16f5a3_400x400.png" alt="Animated GIF" class="hidden">
+    </div>
+    <script>
+      const buttonr = document.getElementById('randomButton');
+
+      buttonr.addEventListener('click', () => {
+        const maxX = window.innerWidth - buttonr.offsetWidth;
+        const maxY = window.innerHeight - buttonr.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        buttonr.style.left = `${randomX}px`;
+        buttonr.style.top = `${randomY}px`;
+      });
+
+    </script>
+    <script>
+      var button = document.getElementById("yes");
+      var textDisplay = document.getElementById("yesText");
+      var gifImage = document.getElementById("gifImage");
+      var button1 = document.getElementById("randomButton");
+      var paragraph = document.querySelector("p");
+      var gf2 = document.getElementById("gif2");
+    
+      button.addEventListener("click", function() {
+        if (!button.disabled) {
+          localStorage.setItem("yesClicked", true);
+          paragraph.style.display = "none";
+          gf2.style.display = "none";
+          if (textDisplay.classList.contains("hidden")) {
+            textDisplay.classList.remove("hidden");
+            gifImage.classList.remove("hidden");
+          } else {
+            textDisplay.classList.add("hidden");
+            gifImage.classList.add("hidden");
+          }
+          button1.style.display = "none";
+          button.disabled = true;
+    
+          type();
+        }
+      });
+    
+      document.getElementById("yes").addEventListener("click", function() {
+        document.getElementById("title").style.display = "none";
+      });
+    
+      const text = [
+        "loveulods"
+      ];
+    
+      let index = 0;
+      let sentence = "";
+      let letterIndex = 0;
+      let reverse = false;
+    
+      function type() {
+        if (index === text.length) {
+          return;
+        }
+    
+        if (!reverse && letterIndex < text[index].length) {
+          sentence += text[index].charAt(letterIndex);
+          document.getElementById('yesText').innerText = sentence;
+          letterIndex++;
+          setTimeout(type, 50);
+        } else {
+          index++;
+          letterIndex = 0;
+          if (index < text.length) {
+            setTimeout(type, 1000);
+          } 
+          sentence = "";
+        }
+      }
+    </script>
+    
+  </body>
+</html>
